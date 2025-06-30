@@ -1,12 +1,15 @@
 local IceHub = {}
-local Options = loadstring(game:HttpGet('https://raw.githubusercontent.com/IceMae17/Library/refs/heads/main/IceHub'))()
 
-local GameTitle = Options.BrookhavenTitle
-local titlecolor = Options.TitleColor
-local labelcolor = Options.LabelColor
-local owners = Options.Owners
-local discord1 = Options.Discord1
-local discord2 = Options.Discord2
+
+
+local GameTitle = "Brookhaven" -- ustaw tytuł statycznie
+local titlecolor = Color3.fromRGB(0, 255, 255)
+local labelcolor = Color3.fromRGB(255, 255, 255)
+local owners = {"Owner1", "Owner2"} -- możesz dodać swoje nicki
+local discord1 = "discord.gg/example1"
+local discord2 = "discord.gg/example2"
+
+
 
 
 function IceHub.CreateMain()
