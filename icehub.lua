@@ -1,15 +1,30 @@
+-- UI by IceMael7
+-- fixed by davi999
+-- Bypassed INFO + example By Wojtes_BMW
 local IceHub = {}
-local Options = loadstring(game:HttpGet('https://raw.githubusercontent.com/IceMael7/IceHubOptions/main/IceHub'))()
-
+local Options = {
+    BrookhavenTitle = "Ice Hub Lib - Brookhaven",
+    TitleColor = Color3.fromRGB(255, 255, 255),
+    LabelColor = Color3.fromRGB(0, 255, 255),
+    Owners = {"Example"},
+    Discord1 = "https://discord.gg/example1",
+    Discord2 = "https://discord.gg/example2"
+}
 local GameTitle = Options.BrookhavenTitle
 local titlecolor = Options.TitleColor
 local labelcolor = Options.LabelColor
 local owners = Options.Owners
 local discord1 = Options.Discord1
 local discord2 = Options.Discord2
-
+local player = game.Players.LocalPlayer
 
 function IceHub.CreateMain()
+    local CoreGui = gethui() or game:GetService("CoreGui")
+
+    if CoreGui:FindFirstChild("Icehub libary") then
+        CoreGui:FindFirstChild("Icehub libary"):Destroy()
+    end
+
 	local Library = Instance.new("ScreenGui")
 	local MainFrame = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
@@ -28,17 +43,18 @@ function IceHub.CreateMain()
 	local Discord = Instance.new("TextButton")
 	local UICorner_6 = Instance.new("UICorner")
 	local IcyImage = Instance.new("ImageLabel")
-	local UICorner_7 = Instance.new("UICorner")
 	local NillestImage = Instance.new("ImageLabel")
+	local NillestRoblox = Instance.new("TextLabel")
+	local NillestDiscord = Instance.new("TextLabel")
+	local UICorner_7 = Instance.new("UICorner")
 	local UICorner_8 = Instance.new("UICorner")
-	local KickAll = Instance.new("TextButton")
+	local UICorner_888 = Instance.new("UICorner")
+	local LagAll = Instance.new("TextButton")
 	local UICorner_9 = Instance.new("UICorner")
 	local TextLabel = Instance.new("TextLabel")
 	local IcyRoblox = Instance.new("TextLabel")
 	local IcyYoutube = Instance.new("TextLabel")
 	local IcyDiscord = Instance.new("TextLabel")
-	local NillestRoblox = Instance.new("TextLabel")
-	local NillestDiscord = Instance.new("TextLabel")
 	local TemplateLabel = Instance.new("TextLabel")
 	local UICorner_13 = Instance.new("UICorner")
 	local TemplateTargettedLabel = Instance.new("TextLabel")
@@ -85,8 +101,8 @@ function IceHub.CreateMain()
 	local NotifyImage = Instance.new("ImageLabel")
 	local UICorner_33 = Instance.new("UICorner")
 
-	Library.Name = "Library"
-	Library.Parent = game.CoreGui
+	Library.Name = "Icehub libary"
+	Library.Parent = CoreGui
 	Library.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 	MainFrame.Name = "MainFrame"
@@ -137,22 +153,25 @@ function IceHub.CreateMain()
 	Menu.AutoButtonColor = false
 	Menu.Font = Enum.Font.Gotham
 	Menu.Text = "Menu"
-	Menu.TextColor3 = Color3.fromRGB(0, 255, 255)
+	Menu.TextColor3 = Color3.fromRGB(255, 0, 0)
 	Menu.TextSize = 12.000
 	Menu.MouseButton1Click:Connect(function()
-		for i,v in pairs(TabContainer.ScrollingFrame:GetChildren()) do
-			if v:IsA("TextButton") then
-				v.TextColor3 = Color3.fromRGB(255, 255, 255)
-			end
-		end
-		Menu.TextColor3 = Color3.fromRGB(0, 255, 255)
-		for i,v in pairs(FrameContainer:GetChildren()) do
-			if v:IsA("ScrollingFrame") then
-				v.Visible = false
-			end
-		end
-		FrameContainer.MenuPage.Visible = true
-	end)
+    -- Primeiro resetar todas as abas para branco
+    for i,v in pairs(TabContainer.ScrollingFrame:GetChildren()) do
+        if v:IsA("TextButton") then
+            v.TextColor3 = Color3.fromRGB(255, 255, 255)
+        end
+    end
+    -- Depois definir apenas a aba Menu como vermelha
+    Menu.TextColor3 = Color3.fromRGB(0, 255, 255)
+    
+    for i,v in pairs(FrameContainer:GetChildren()) do
+        if v:IsA("ScrollingFrame") then
+            v.Visible = false
+        end
+    end
+    FrameContainer.MenuPage.Visible = true
+end)
 
 	UICornersss.CornerRadius = UDim.new(0, 3)
 	UICornersss.Parent = Menu
@@ -170,127 +189,51 @@ function IceHub.CreateMain()
 	MenuPage.CanvasSize = UDim2.new(0, 0, 50, 0)
 	MenuPage.ScrollBarThickness = 5
 
-	NameLabel.Name = "NameLabel"
-	NameLabel.Parent = MenuPage
-	NameLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-	NameLabel.BorderColor3 = Color3.fromRGB(20, 20, 20)
-	NameLabel.Position = UDim2.new(0.375201404, 0, 0.000481928233, 0)
-	NameLabel.Size = UDim2.new(0, 180, 0, 27)
-	NameLabel.Font = Enum.Font.SourceSans
-	NameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-	NameLabel.TextSize = 14.000
-
+    NameLabel.Name = "NameLabel"
+    NameLabel.Parent = MenuPage
+    NameLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    NameLabel.BorderColor3 = Color3.fromRGB(20, 20, 20)
+    NameLabel.Position = UDim2.new(0.375201404, 0, 0.000481928233, 0)
+    NameLabel.Size = UDim2.new(0, 180, 0, 27)
+    NameLabel.Font = Enum.Font.SourceSans
+    NameLabel.Text = "Hey " .. player.Name
+    NameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    NameLabel.TextSize = 14.000
+    
 	UICorner_4.CornerRadius = UDim.new(0, 4)
 	UICorner_4.Parent = NameLabel
 
-	ImageLabel.Parent = MenuPage
-	ImageLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-	ImageLabel.BorderColor3 = Color3.fromRGB(20, 20, 20)
-	ImageLabel.Position = UDim2.new(0.0249417536, 0, 0.000552987156, 0)
-	ImageLabel.Size = UDim2.new(0, 91, 0, 91)
-	ImageLabel.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+    ImageLabel.Parent = MenuPage
+    ImageLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    ImageLabel.BorderColor3 = Color3.fromRGB(20, 20, 20)
+    ImageLabel.Position = UDim2.new(0.0249417536, 0, 0.000552987156, 0)
+    ImageLabel.Size = UDim2.new(0, 91, 0, 91)
+    ImageLabel.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. player.UserId .. "&width=420&height=420&format=png"
 
 	UICorner_5.CornerRadius = UDim.new(0, 4)
 	UICorner_5.Parent = ImageLabel
 
-	Discord.Name = "Discord"
-	Discord.Parent = MenuPage
-	Discord.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-	Discord.BorderColor3 = Color3.fromRGB(20, 20, 20)
-	Discord.Position = UDim2.new(0.374000013, 0, 0.00350000011, 0)
-	Discord.Size = UDim2.new(0, 180, 0, 27)
-	Discord.AutoButtonColor = false
-	Discord.Font = Enum.Font.SourceSans
-	Discord.Text = "Discord"
-	Discord.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Discord.TextSize = 14.000
+	
 
 	UICorner_6.CornerRadius = UDim.new(0, 4)
 	UICorner_6.Parent = Discord
 
-	IcyImage.Name = "IcyImage"
-	IcyImage.Parent = MenuPage
-	IcyImage.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-	IcyImage.BorderColor3 = Color3.fromRGB(20, 20, 20)
-	IcyImage.Position = UDim2.new(0.0249417536, 0, 0.0123815509, 0)
-	IcyImage.Size = UDim2.new(0, 91, 0, 91)
-	IcyImage.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
-
 	UICorner_7.CornerRadius = UDim.new(0, 4)
 	UICorner_7.Parent = IcyImage
-
+	
 	NillestImage.Name = "NillestImage"
 	NillestImage.Parent = MenuPage
 	NillestImage.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 	NillestImage.BorderColor3 = Color3.fromRGB(20, 20, 20)
 	NillestImage.Position = UDim2.new(0.0249417536, 0, 0.0219548456, 0)
 	NillestImage.Size = UDim2.new(0, 91, 0, 91)
-	NillestImage.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+	NillestImage.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=1&width=420&height=420&format=png"
 
 	UICorner_8.CornerRadius = UDim.new(0, 4)
 	UICorner_8.Parent = NillestImage
+    
 
-	KickAll.Name = "KickAll"
-	KickAll.Parent = MenuPage
-	KickAll.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-	KickAll.BorderColor3 = Color3.fromRGB(20, 20, 20)
-	KickAll.Position = UDim2.new(0.374412775, 0, 0.00655617705, 0)
-	KickAll.Size = UDim2.new(0, 180, 0, 27)
-	KickAll.AutoButtonColor = false
-	KickAll.Font = Enum.Font.SourceSans
-	KickAll.Text = "Kick All"
-	KickAll.TextColor3 = Color3.fromRGB(255, 255, 255)
-	KickAll.TextSize = 14.000
-
-	UICorner_9.CornerRadius = UDim.new(0, 4)
-	UICorner_9.Parent = KickAll
-
-	TextLabel.Parent = MenuPage
-	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TextLabel.BackgroundTransparency = 1.000
-	TextLabel.Position = UDim2.new(0.540268481, 0, 0.01060241, 0)
-	TextLabel.Size = UDim2.new(0, 80, 0, 10)
-	TextLabel.Font = Enum.Font.SourceSans
-	TextLabel.Text = "Creator"
-	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-	TextLabel.TextSize = 14.000
-
-	IcyRoblox.Name = "IcyRoblox"
-	IcyRoblox.Parent = MenuPage
-	IcyRoblox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	IcyRoblox.BackgroundTransparency = 1.000
-	IcyRoblox.Position = UDim2.new(0.506711423, 0, 0.0148192821, 0)
-	IcyRoblox.Size = UDim2.new(0, 100, 0, 15)
-	IcyRoblox.Font = Enum.Font.SourceSans
-	IcyRoblox.Text = "Roblox : IceMael7"
-	IcyRoblox.TextColor3 = Color3.fromRGB(255, 255, 255)
-	IcyRoblox.TextSize = 14.000
-	IcyRoblox.TextXAlignment = Enum.TextXAlignment.Left
-
-	IcyYoutube.Name = "IcyYoutube"
-	IcyYoutube.Parent = MenuPage
-	IcyYoutube.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	IcyYoutube.BackgroundTransparency = 1.000
-	IcyYoutube.Position = UDim2.new(0.506711423, 0, 0.0162650626, 0)
-	IcyYoutube.Size = UDim2.new(0, 100, 0, 15)
-	IcyYoutube.Font = Enum.Font.SourceSans
-	IcyYoutube.Text = "Youtube : IceHub"
-	IcyYoutube.TextColor3 = Color3.fromRGB(255, 255, 255)
-	IcyYoutube.TextSize = 14.000
-	IcyYoutube.TextXAlignment = Enum.TextXAlignment.Left
-
-	IcyDiscord.Name = "IcyDiscord"
-	IcyDiscord.Parent = MenuPage
-	IcyDiscord.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	IcyDiscord.BackgroundTransparency = 1.000
-	IcyDiscord.Position = UDim2.new(0.506711423, 0, 0.0175903663, 0)
-	IcyDiscord.Size = UDim2.new(0, 100, 0, 15)
-	IcyDiscord.Font = Enum.Font.SourceSans
-	IcyDiscord.Text = "Discord : Icy#4444"
-	IcyDiscord.TextColor3 = Color3.fromRGB(255, 255, 255)
-	IcyDiscord.TextSize = 14.000
-	IcyDiscord.TextXAlignment = Enum.TextXAlignment.Left
-
+    
 	NillestRoblox.Name = "NillestRoblox"
 	NillestRoblox.Parent = MenuPage
 	NillestRoblox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -298,7 +241,7 @@ function IceHub.CreateMain()
 	NillestRoblox.Position = UDim2.new(0.506711423, 0, 0.0248192828, 0)
 	NillestRoblox.Size = UDim2.new(0, 100, 0, 15)
 	NillestRoblox.Font = Enum.Font.SourceSans
-	NillestRoblox.Text = "Roblox : grze2"
+	NillestRoblox.Text = "Roblox : soolkodd"
 	NillestRoblox.TextColor3 = Color3.fromRGB(255, 255, 255)
 	NillestRoblox.TextSize = 14.000
 	NillestRoblox.TextXAlignment = Enum.TextXAlignment.Left
@@ -310,11 +253,11 @@ function IceHub.CreateMain()
 	NillestDiscord.Position = UDim2.new(0.506711423, 0, 0.0261445791, 0)
 	NillestDiscord.Size = UDim2.new(0, 100, 0, 15)
 	NillestDiscord.Font = Enum.Font.SourceSans
-	NillestDiscord.Text = "Discord : nillest#3135"
+	NillestDiscord.Text = "Discord : tixxoyt_45639"
 	NillestDiscord.TextColor3 = Color3.fromRGB(255, 255, 255)
 	NillestDiscord.TextSize = 14.000
 	NillestDiscord.TextXAlignment = Enum.TextXAlignment.Left
-
+	
 	Target.Name = "Target"
 	Target.Parent = TemplateTargettedLabel
 	Target.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -343,8 +286,8 @@ function IceHub.CreateMain()
 
 	Bar.Name = "Bar"
 	Bar.Parent = SliderButton
-	Bar.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
-	Bar.BorderColor3 = Color3.fromRGB(0, 255, 255)
+	Bar.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	Bar.BorderColor3 = Color3.fromRGB(255, 0, 0)
 	Bar.Position = UDim2.new(-0.00427652989, 0, -0.0999959335, 0)
 	Bar.Size = UDim2.new(0, 0, 0, 6)
 
@@ -414,17 +357,89 @@ function IceHub.CreateMain()
 	UICorner_22.CornerRadius = UDim.new(0, 4)
 	UICorner_22.Parent = Close
 
-	Minimize.Name = "Minimize"
-	Minimize.Parent = TopFrame
-	Minimize.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-	Minimize.BorderColor3 = Color3.fromRGB(20, 20, 20)
-	Minimize.Position = UDim2.new(0.858823538, 0, 0, 0)
-	Minimize.Size = UDim2.new(0, 30, 0, 30)
-	Minimize.AutoButtonColor = false
-	Minimize.Font = Enum.Font.Gotham
-	Minimize.Text = "-"
-	Minimize.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Minimize.TextSize = 12.000
+local TweenService = game:GetService("TweenService")
+local Times = 0
+Close.MouseButton1Click:Connect(function()
+    Times = Times + 1
+    
+    if Times == 1 then
+        task.spawn(function()
+            local redTween = TweenService:Create(
+                Close,
+                TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+                {TextColor3 = Color3.fromRGB(250, 21, 5)}
+            )
+            redTween:Play()
+            
+            task.wait(5)
+            
+            local whiteTween = TweenService:Create(
+                Close,
+                TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+                {TextColor3 = Color3.fromRGB(255, 255, 255)}
+            )
+            whiteTween:Play()
+            
+            Times = 0
+        end)
+    end
+    
+    if Times == 2 then
+        Library:Destroy()
+    end
+end)
+Minimize.Name = "Minimize"
+Minimize.Parent = TopFrame
+Minimize.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Minimize.BorderColor3 = Color3.fromRGB(20, 20, 20)
+Minimize.Position = UDim2.new(0.858823538, 0, 0, 0)
+Minimize.Size = UDim2.new(0, 30, 0, 30)
+Minimize.AutoButtonColor = false
+Minimize.Font = Enum.Font.Gotham
+Minimize.Text = "-"
+Minimize.TextColor3 = Color3.fromRGB(255, 255, 255)
+Minimize.TextSize = 12.000
+
+local isMinimized = false
+local AT 
+Minimize.MouseButton1Click:Connect(function()
+    if not isMinimized then
+game:GetService("TweenService"):Create(MainFrame,TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Position = UDim2.new(0.5, 0, 0, 30),
+Size = UDim2.new(0, 425, 0, 30)
+            }
+        ):Play()
+  
+      for i,v in pairs(FrameContainer:GetChildren()) do
+        if v.Visible then
+AT = v
+v.Visible = false
+end
+end
+TabContainer.Visible = false
+Minimize.Text = "+"
+else
+local TweenFinished = false
+
+local TT = game:GetService("TweenService"):Create(
+    MainFrame,
+    TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+    {Position = UDim2.new(0.5, 0, 0.5, 0), Size = UDim2.new(0, 425, 0, 210)}
+)
+
+TT.Completed:Connect(function()
+    TweenFinished = true
+end)
+
+TT:Play()
+repeat task.wait() until TweenFinished
+AT.Visible = true
+TabContainer.Visible = true
+
+Minimize.Text = "-" 
+end
+    
+    isMinimized = not isMinimized
+end)
 
 	UICorner_23.CornerRadius = UDim.new(0, 4)
 	UICorner_23.Parent = Minimize
@@ -539,8 +554,8 @@ function IceHub.CreateMain()
 
 	TimerBar.Name = "TimerBar"
 	TimerBar.Parent = Notify
-	TimerBar.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
-	TimerBar.BorderColor3 = Color3.fromRGB(0, 255, 255)
+	TimerBar.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	TimerBar.BorderColor3 = Color3.fromRGB(255, 0, 0)
 	TimerBar.Position = UDim2.new(0, 0, 0.972999692, 0)
 	TimerBar.Size = UDim2.new(0, 225, 0, 2)
 
@@ -602,12 +617,46 @@ function IceHub.CreateMain()
 
 		-- UpdateSize
 		local function UpdateSize()
-			local cS = PageListLayout.AbsoluteContentSize
+    local cS = PageListLayout.AbsoluteContentSize
+    
+    local totalHeight = cS.Y
+    
+    for _, child in ipairs(TemplatePage:GetChildren()) do
+        if child:IsA("Frame") and child.Name == "OptionsFrame" then
+          for i,v in pairs(child:GetChildren()) do
+            if v:IsA("TextButton") then
+            totalHeight = totalHeight + v.AbsoluteSize.Y
+            end
+            end
+        end
+    end
+    
+    totalHeight = totalHeight + 10
+    
+    game.TweenService:Create(
+        TemplatePage,
+        TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In),
+        {
+            CanvasSize = UDim2.new(0, 0, 0, totalHeight)
+        }
+    ):Play()
+end
 
-			game.TweenService:Create(TemplatePage, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-				CanvasSize = UDim2.new(0,0,0,cS.Y)
-			}):Play()
-		end
+local function UpdateDropdownSize(dropdownFrame)
+    local cS = PageListLayout.AbsoluteContentSize
+    local dropdownHeight = dropdownFrame.AbsoluteSize.Y
+    local dropdownPosition = dropdownFrame.AbsolutePosition.Y - TemplatePage.AbsolutePosition.Y
+    local neededHeight = dropdownPosition + dropdownHeight + 20 
+    if neededHeight > cS.Y then
+        game.TweenService:Create(
+            TemplatePage,
+            TweenInfo.new(0.2, Enum.EasingStyle.Quad),
+            {
+                CanvasSize = UDim2.new(0, 0, 0, neededHeight)
+            }
+        ):Play()
+    end
+end
 
 		-- TemplateTab
 		TemplateTab.Name = "TemplateTab"
@@ -693,40 +742,342 @@ function IceHub.CreateMain()
 			UpdateSize()
 
 			local Elements = {}
+
 			function Elements:NewButton(ButtonName, callback)
 				callback = callback or function() end
 				-- TemplateButton
 				local TemplateButton = Instance.new("TextButton")
+				local TemplateText = Instance.new("TextLabel")
 				local UICorner_11 = Instance.new("UICorner")
-
+                local ButtonIcon = Instance.new("ImageLabel")
+                local ButtonIcon2 = Instance.new("ImageLabel")
+                local ButtonBorder = Instance.new("UIStroke")
+                
 				-- TemplateButton
 				TemplateButton.Name = "TemplateButton"
 				TemplateButton.Parent = TemplatePage
 				TemplateButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 				TemplateButton.BorderColor3 = Color3.fromRGB(20, 20, 20)
-				TemplateButton.Position = UDim2.new(0, 0, 0.198794991, 0)
+				TemplateButton.Position = UDim2.new(0.05, 0, 0.198794991, 0)
 				TemplateButton.Size = UDim2.new(0, 295, 0, 30)
-				TemplateButton.Font = Enum.Font.Gotham
-				TemplateButton.Text = ""..ButtonName
+				TemplateButton.Text = ""
 				TemplateButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-				TemplateButton.TextSize = 12.000
-
+				
 				UICorner_11.CornerRadius = UDim.new(0, 4)
 				UICorner_11.Parent = TemplateButton
+
+                ButtonBorder.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+                ButtonBorder.Thickness = 1
+                ButtonBorder.Color = Color3.fromRGB(47, 47, 47)
+                ButtonBorder.Parent = TemplateButton
 
 				updateSectionFrame()
 				UpdateSize()
 
+                TemplateText.Parent = TemplateButton
+                TemplateText.Size = UDim2.new(1, -40, 1, 0)
+                TemplateText.Position = UDim2.new(0, 30, 0, 0)
+                TemplateText.Text = ""..ButtonName
+                TemplateText.Font = Enum.Font.Gotham
+                TemplateText.TextSize = 12.000
+                TemplateText.TextColor3 = Color3.fromRGB(255, 255, 255)
+                TemplateText.TextXAlignment = Enum.TextXAlignment.Left
+                TemplateText.BackgroundTransparency = 1
+
+                ButtonIcon.Name = "Icon"
+                ButtonIcon.Parent = TemplateButton
+                ButtonIcon.BackgroundTransparency = 1
+                ButtonIcon.Position = UDim2.new(0, 0, 0.1, 0)
+                ButtonIcon.Size = UDim2.new(0, 25, 0, 25)
+                ButtonIcon.Image = "rbxassetid://14640546792"
+
+                ButtonIcon2.Name = "Icon"
+                ButtonIcon2.Parent = TemplateButton
+                ButtonIcon2.BackgroundTransparency = 1
+                ButtonIcon2.Position = UDim2.new(0.93, 0, 0.15, 0)
+                ButtonIcon2.Size = UDim2.new(0, 20, 0, 20)
+                ButtonIcon2.Image = "rbxassetid://109266253466247"
 				TemplateButton.MouseButton1Click:Connect(function()
 					callback()
 				end)
+            end
+function Elements:NewDropdown(DropdownName, Options, callback)
+    callback = callback or function() end
+    local isOpen = false
+    local dropdownHeight = 30
+    local optionHeight = 25
+    local totalOptions = #Options
+
+    local DropdownButton = Instance.new("TextButton")
+    DropdownButton.Name = "DropdownButton"
+    DropdownButton.Parent = TemplatePage
+    DropdownButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    DropdownButton.BorderSizePixel = 0
+    DropdownButton.Position = UDim2.new(0.05, 0, 0, 0)
+    DropdownButton.Size = UDim2.new(0, 295, 0, 30)
+    DropdownButton.Text = ""
+    DropdownButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    DropdownButton.ZIndex = 2
+
+    local UICorner = Instance.new("UICorner")
+    UICorner.CornerRadius = UDim.new(0, 4)
+    UICorner.Parent = DropdownButton
+
+    local ButtonBorder = Instance.new("UIStroke")
+    ButtonBorder.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    ButtonBorder.Thickness = 2
+    ButtonBorder.Color = Color3.fromRGB(47, 47, 47)
+    ButtonBorder.Parent = DropdownButton
+
+    local DropdownText = Instance.new("TextLabel")
+    DropdownText.Parent = DropdownButton
+    DropdownText.Size = UDim2.new(1, -40, 1, 0)
+    DropdownText.Position = UDim2.new(0, 30, 0, 0)
+    DropdownText.Text = DropdownName
+    DropdownText.Font = Enum.Font.Gotham
+    DropdownText.TextSize = 12
+    DropdownText.TextColor3 = Color3.fromRGB(255, 255, 255)
+    DropdownText.TextXAlignment = Enum.TextXAlignment.Left
+    DropdownText.BackgroundTransparency = 1
+    DropdownText.ZIndex = 2
+
+    local ButtonIcon = Instance.new("ImageLabel")
+    ButtonIcon.Name = "Icon"
+    ButtonIcon.Parent = DropdownButton
+    ButtonIcon.BackgroundTransparency = 1
+    ButtonIcon.Position = UDim2.new(0, 0, 0.1, 0)
+    ButtonIcon.Size = UDim2.new(0, 25, 0, 25)
+    ButtonIcon.Image = "rbxassetid://14640546792"
+    ButtonIcon.ZIndex = 2
+
+    local DropdownIcon = Instance.new("ImageLabel")
+    DropdownIcon.Name = "DropdownIcon"
+    DropdownIcon.Parent = DropdownButton
+    DropdownIcon.BackgroundTransparency = 1
+    DropdownIcon.Position = UDim2.new(0.93, 0, 0.15, 0)
+    DropdownIcon.Size = UDim2.new(0, 20, 0, 20)
+    DropdownIcon.Image = "rbxassetid://109266253466247"
+    DropdownIcon.ZIndex = 2
+
+    local OptionsFrame = Instance.new("Frame")
+    OptionsFrame.Name = "OptionsFrame"
+    OptionsFrame.Parent = TemplatePage
+    OptionsFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    OptionsFrame.BorderSizePixel = 0
+    OptionsFrame.Position = UDim2.new(0.05, 0, 0, 0)
+    OptionsFrame.Size = UDim2.new(0, 295, 0, 0)
+    OptionsFrame.Visible = false
+    OptionsFrame.ClipsDescendants = true
+    OptionsFrame.ZIndex = 3
+
+    local OptionsCorner = Instance.new("UICorner")
+    OptionsCorner.CornerRadius = UDim.new(0, 4)
+    OptionsCorner.Parent = OptionsFrame
+
+    local currentOptions = {}
+    for _, option in ipairs(Options) do
+        table.insert(currentOptions, option)
+    end
+    local function updateOptionsFramePosition()
+        local absoluteY = DropdownButton.AbsolutePosition.Y + DropdownButton.AbsoluteSize.Y - TemplatePage.AbsolutePosition.Y
+        OptionsFrame.Position = UDim2.new(0.05, 0, 0, absoluteY + TemplatePage.CanvasPosition.Y)
+    end
+    
+    local function toggleDropdown()
+        isOpen = not isOpen
+        updateOptionsFramePosition()
+        local goalRotation = isOpen and 180 or 0
+        game:GetService("TweenService"):Create(
+            DropdownIcon,
+            TweenInfo.new(0.2),
+            {Rotation = goalRotation}
+        ):Play()
+        
+        if isOpen then
+            OptionsFrame.Visible = isOpen
+        end
+        
+        local TWeenF = false
+        local targetHeight = isOpen and (optionHeight * totalOptions) or 0
+        local GG = game:GetService("TweenService"):Create(
+            OptionsFrame,
+            TweenInfo.new(0.2),
+            {Size = UDim2.new(0, 295, 0, targetHeight)}
+        )
+
+        GG.Completed:Connect(function()
+            TWeenF = true
+        end)
+        GG:Play()
+        
+        repeat task.wait() until TWeenF
+        if not isOpen then
+            OptionsFrame.Visible = isOpen
+        end
+        
+        UpdateSize()
+    end
+
+    local function createOptionButton(option, index)
+        local OptionButton = Instance.new("TextButton")
+        OptionButton.Name = "OptionButton_"..option
+        OptionButton.Parent = OptionsFrame
+        OptionButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+        OptionButton.BorderSizePixel = 0
+        OptionButton.Position = UDim2.new(0, 0, 0, (index-1)*optionHeight)
+        OptionButton.Size = UDim2.new(1, 0, 0, optionHeight)
+        OptionButton.Text = "   "..option
+        OptionButton.Font = Enum.Font.Gotham
+        OptionButton.TextSize = 12
+        OptionButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+        OptionButton.TextXAlignment = Enum.TextXAlignment.Left
+        OptionButton.ZIndex = 3
+
+        local OptionPadding = Instance.new("UIPadding")
+        OptionPadding.Parent = OptionButton
+        OptionPadding.PaddingLeft = UDim.new(0, 10)
+
+        OptionButton.MouseButton1Click:Connect(function()
+            DropdownText.Text = DropdownName.." - "..option
+            callback(option)
+            toggleDropdown()
+        end)
+        
+        return OptionButton
+    end
+
+    local function rebuildOptions()
+        for _, child in ipairs(OptionsFrame:GetChildren()) do
+            if child:IsA("TextButton") then
+                child:Destroy()
+            end
+        end
+        
+        for i, option in ipairs(currentOptions) do
+            createOptionButton(option, i)
+        end
+        
+        totalOptions = #currentOptions
+        OptionsFrame.Size = UDim2.new(0, 295, 0, isOpen and (optionHeight * totalOptions) or 0)
+        UpdateSize()
+    end
+
+    local function AddOption(optionName)
+        if not table.find(currentOptions, optionName) then
+            table.insert(currentOptions, optionName)
+            rebuildOptions()
+        end
+    end
+
+    local function RemoveOption(optionName)
+        local index = table.find(currentOptions, optionName)
+        if index then
+            table.remove(currentOptions, index)
+            rebuildOptions()
+        end
+    end
+
+    local function Set(optionName)
+        if table.find(currentOptions, optionName) then
+            DropdownText.Text = DropdownName.." - "..optionName
+            callback(optionName)
+        end
+    end
+
+    DropdownButton.MouseButton1Click:Connect(toggleDropdown)
+    TemplatePage:GetPropertyChangedSignal("CanvasPosition"):Connect(updateOptionsFramePosition)
+    rebuildOptions()
+    return {
+        AddOption = AddOption,
+        RemoveOption = RemoveOption,
+        Set = Set
+    }
+end
+    function Elements:NewToggle(ToggleName, callback)
+    callback = callback or function() end
+                
+    local TemplateButton = Instance.new("TextButton")
+    local TemplateText = Instance.new("TextLabel")
+    local UICorner_11 = Instance.new("UICorner")
+    local ButtonIcon = Instance.new("ImageLabel")
+    local ButtonIcon2 = Instance.new("ImageLabel")
+    local ButtonBorder = Instance.new("UIStroke")
+
+    TemplateButton.Name = "TemplateButton"
+    TemplateButton.Parent = TemplatePage
+    TemplateButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    TemplateButton.BorderColor3 = Color3.fromRGB(20, 20, 20)
+    TemplateButton.Position = UDim2.new(0.05, 0, 0.198794991, 0)
+    TemplateButton.Size = UDim2.new(0, 295, 0, 30)
+    TemplateButton.Text = ""
+    TemplateButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    UICorner_11.CornerRadius = UDim.new(0, 4)
+    UICorner_11.Parent = Te
+    ButtonBorder.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    ButtonBorder.Thickness = 1
+    ButtonBorder.Color = Color3.fromRGB(47, 47, 47)
+    ButtonBorder.Parent = TemplateButton
+
+    updateSectionFrame()
+    UpdateSize()
+
+    TemplateText.Parent = TemplateButton
+    TemplateText.Size = UDim2.new(1, -40, 1, 0)
+    TemplateText.Position = UDim2.new(0, 30, 0, 0)
+    TemplateText.Text = ""..ToggleName
+    TemplateText.Font = Enum.Font.Gotham
+    TemplateText.TextSize = 12.000
+    TemplateText.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TemplateText.TextXAlignment = Enum.TextXAlignment.Left
+    TemplateText.BackgroundTransparency = 1
+
+    ButtonIcon.Name = "Icon"
+    ButtonIcon.Parent = TemplateButton
+    ButtonIcon.BackgroundTransparency = 1
+    ButtonIcon.Position = UDim2.new(0, 0, 0.1, 0)
+    ButtonIcon.Size = UDim2.new(0, 25, 0, 25)
+    ButtonIcon.Image = "rbxassetid://105851806789619"
+
+    ButtonIcon2.Name = "Icon"
+    ButtonIcon2.Parent = TemplateButton
+    ButtonIcon2.BackgroundTransparency = 1
+    ButtonIcon2.Position = UDim2.new(0.93, 0, 0.15, 0)
+    ButtonIcon2.Size = UDim2.new(0, 20, 0, 20)
+    ButtonIcon2.Image = "rbxassetid://109266253466247"
+
+    local Toggle = false
+    TemplateButton.MouseButton1Click:Connect(function()
+    Toggle = not Toggle
+    local TweenService = game:GetService("TweenService")
+    local imageOn = "rbxassetid://100075267963696"
+    local imageOff = "rbxassetid://105851806789619"
+
+    if Toggle then
+    local tween = TweenService:Create(
+    ButtonIcon,
+    TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+    {
+    Rotation = 90,
+    ImageTransparency = 0
+    })tween:Play()
+    ButtonIcon.Image = imageOn
+    else
+    local tween = TweenService:Create(
+    ButtonIcon,TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Rotation = 0,
+    ImageTransparency = 0.3
+    })tween:Play()
+    ButtonIcon.Image = imageOff
+    end
+
+callback(Toggle)
+end)
+end
 
 				function Elements:NewLabel(LabelText)
 					-- TemplateLabel
 					local TemplateLabel = Instance.new("TextLabel")
 					local UICorner_10 = Instance.new("UICorner")
 
-					-- TemplateLabel
 					TemplateLabel.Name = "CustomLabel"
 					TemplateLabel.Parent = TemplatePage
 					TemplateLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
@@ -734,7 +1085,7 @@ function IceHub.CreateMain()
 					TemplateLabel.Size = UDim2.new(0, 295, 0, 30)
 					TemplateLabel.Font = Enum.Font.Gotham
 					TemplateLabel.Text = ""..LabelText
-					TemplateLabel.TextColor3 = Color3.fromRGB(0, 255, 255)
+					TemplateLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
 					TemplateLabel.TextSize = 12.000
 
 					UICorner_10.CornerRadius = UDim.new(0, 4)
@@ -742,14 +1093,15 @@ function IceHub.CreateMain()
 
 					updateSectionFrame()
 					UpdateSize()
-
+ end
 					function Elements:NewTextBox(Text, PlaceholderText, callback)
 						callback = callback or function() end
 						-- TemplateBox
 						local TemplateBox = Instance.new("TextBox")
+						local TemplateText = Instance.new("TextLabel")
 						local UICorner_12 = Instance.new("UICorner")
-
-						-- TemplateBox
+                        local ButtonIcon = Instance.new("ImageLabel")
+                        local ButtonIcon2 = Instance.new("ImageLabel")
 						TemplateBox.Name = "TemplateBox"
 						TemplateBox.Parent = TemplatePage
 						TemplateBox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
@@ -759,22 +1111,51 @@ function IceHub.CreateMain()
 						TemplateBox.Font = Enum.Font.Gotham
 						TemplateBox.PlaceholderColor3 = Color3.fromRGB(178, 178, 178)
 						TemplateBox.PlaceholderText = ""..PlaceholderText
-						TemplateBox.Text = ""..Text
+						TemplateBox.Text = ""
 						TemplateBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 						TemplateBox.TextSize = 12.000
 
 						UICorner_12.CornerRadius = UDim.new(0, 4)
 						UICorner_12.Parent = TemplateBox
+                        
+                        local ButtonBorder = Instance.new("UIStroke")
+                        ButtonBorder.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+                        ButtonBorder.Thickness = 2
+                        ButtonBorder.Color = Color3.fromRGB(47, 47, 47)
+                        ButtonBorder.Parent = TemplateBox
 
 						updateSectionFrame()
 						UpdateSize()
+                        TemplateText.Parent = TemplateBox
+                        TemplateText.Size = UDim2.new(1, -40, 1, 0)
+                        TemplateText.Position = UDim2.new(0, 30, 0, 0)
+                        TemplateText.Text = ""..Text
+                        TemplateText.Font = Enum.Font.Gotham
+                        TemplateText.TextSize = 12.000
+                        TemplateText.TextColor3 = Color3.fromRGB(255, 255, 255)
+                        TemplateText.TextXAlignment = Enum.TextXAlignment.Left
+                        TemplateText.BackgroundTransparency = 1
+                        ButtonIcon.Name = "Icon"
+                        ButtonIcon.Parent = TemplateBox
+                        ButtonIcon.BackgroundTransparency = 1
+                        ButtonIcon.Position = UDim2.new(0.02, 0, 0.15, 0)
+                        ButtonIcon.ImageColor3 = Color3.new(50/255, 50/255, 50/255)
+                        ButtonIcon.Size = UDim2.new(0, 20, 0, 20)
+                        ButtonIcon.Image = "rbxassetid://97889814027474"
+                        ButtonIcon.Rotation = 270
 
+                        ButtonIcon2.Name = "Icon"
+                        ButtonIcon2.Parent = TemplateBox
+                        ButtonIcon2.BackgroundTransparency = 1
+                        ButtonIcon2.Position = UDim2.new(0.93, 0, 0.15, 0)
+                        ButtonIcon2.Size = UDim2.new(0, 20, 0, 20)
+                        ButtonIcon2.Image = "rbxassetid://109266253466247"
 						TemplateBox.FocusLost:Connect(function()
 							callback(TemplateBox.Text)
 							wait(0.18)
 							TemplateBox.Text = ""
 						end)
-						
+						end
 						function Elements:NewTutorial(Images)
 							callback = callback or function() end
 							
@@ -830,7 +1211,7 @@ function IceHub.CreateMain()
 								TutorialPage.BackgroundTransparency = 1.000
 								TutorialPage.BorderColor3 = Color3.fromRGB(30, 30, 30)
 								TutorialPage.Position = UDim2.new(0, 0, 0.136466324, 0)
-								TutorialPage.Size = UDim2.new(0, 425, 0, 181)
+								TutorialPage.Size = UDim2.new(0, 425, 0, 181) 
 								TutorialPage.Visible = false
 								TutorialPage.ScrollBarThickness = 1
 
@@ -904,13 +1285,11 @@ function IceHub.CreateMain()
 								end
 							end)
 						end
-					end
-				end
-			end
 			return Elements
 		end
 		return Sections
 	end
 	return Tabs
 end
+
 return IceHub
