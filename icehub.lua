@@ -241,7 +241,7 @@ end)
 	NillestRoblox.Position = UDim2.new(0.506711423, 0, 0.0248192828, 0)
 	NillestRoblox.Size = UDim2.new(0, 100, 0, 15)
 	NillestRoblox.Font = Enum.Font.SourceSans
-	NillestRoblox.Text = "Roblox : soolkodd"
+	NillestRoblox.Text = "Roblox : example"
 	NillestRoblox.TextColor3 = Color3.fromRGB(255, 255, 255)
 	NillestRoblox.TextSize = 14.000
 	NillestRoblox.TextXAlignment = Enum.TextXAlignment.Left
@@ -253,7 +253,7 @@ end)
 	NillestDiscord.Position = UDim2.new(0.506711423, 0, 0.0261445791, 0)
 	NillestDiscord.Size = UDim2.new(0, 100, 0, 15)
 	NillestDiscord.Font = Enum.Font.SourceSans
-	NillestDiscord.Text = "Discord : tixxoyt_45639"
+	NillestDiscord.Text = "Discord : example"
 	NillestDiscord.TextColor3 = Color3.fromRGB(255, 255, 255)
 	NillestDiscord.TextSize = 14.000
 	NillestDiscord.TextXAlignment = Enum.TextXAlignment.Left
