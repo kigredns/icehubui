@@ -50,7 +50,7 @@ end)
 ## Button
 ```lua
 test1:NewButton("Button", function()
-    print("Kliknięto przycisk")
+    print("Click Me!")
 end)
 ```
 
