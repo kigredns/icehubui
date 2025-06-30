@@ -53,5 +53,7 @@ test1:NewButton("Button", function()
     print("Click Me!")
 end)
 ```
-
-
+## Image
+```lua
+test1:NewTutorial(123456789)
+```
