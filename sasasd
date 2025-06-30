@@ -1,13 +1,15 @@
+-- UI RESTORED BY WOJTES_BMW 
+-- MAIN OWNER UI = ICY
 local IceHub = {}
 
 
 
-local GameTitle = "Brookhaven" -- ustaw tytuł statycznie
+local GameTitle = "Ice Hub - Brookhaven | UI RESTORED BY WOJTES_BMW | " -- title
 local titlecolor = Color3.fromRGB(0, 255, 255)
 local labelcolor = Color3.fromRGB(255, 255, 255)
-local owners = {"Owner1", "Owner2"} -- możesz dodać swoje nicki
-local discord1 = "discord.gg/example1"
-local discord2 = "discord.gg/example2"
+local owners = {"Owner1", "Owner2"} -- owners
+local discord1 = "https://discord.gg/xzBCMYMn35" -- discord1
+local discord2 = "https://discord.gg/xzBCMYMn35" -- discord2 if u want 3 just copy this local discord2 = "https://discord.gg/xzBCMYMn35"  and change 2 to 3 and paste  
 
 
 
@@ -217,7 +219,7 @@ function IceHub.CreateMain()
 	IcyImage.BorderColor3 = Color3.fromRGB(20, 20, 20)
 	IcyImage.Position = UDim2.new(0.0249417536, 0, 0.0123815509, 0)
 	IcyImage.Size = UDim2.new(0, 91, 0, 91)
-	IcyImage.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+	IcyImage.Image = "rbxassetid://130434941144456"
 
 	UICorner_7.CornerRadius = UDim.new(0, 4)
 	UICorner_7.Parent = IcyImage
@@ -241,7 +243,7 @@ function IceHub.CreateMain()
 	KickAll.Size = UDim2.new(0, 180, 0, 27)
 	KickAll.AutoButtonColor = false
 	KickAll.Font = Enum.Font.SourceSans
-	KickAll.Text = "Kick All"
+	KickAll.Text = "UI RESTORED BY WOJTES_BMW"
 	KickAll.TextColor3 = Color3.fromRGB(255, 255, 255)
 	KickAll.TextSize = 14.000
 
@@ -265,7 +267,7 @@ function IceHub.CreateMain()
 	IcyRoblox.Position = UDim2.new(0.506711423, 0, 0.0148192821, 0)
 	IcyRoblox.Size = UDim2.new(0, 100, 0, 15)
 	IcyRoblox.Font = Enum.Font.SourceSans
-	IcyRoblox.Text = "Roblox : IceMael7"
+	IcyRoblox.Text = "Roblox : Wojtes_BMW"
 	IcyRoblox.TextColor3 = Color3.fromRGB(255, 255, 255)
 	IcyRoblox.TextSize = 14.000
 	IcyRoblox.TextXAlignment = Enum.TextXAlignment.Left
@@ -277,7 +279,7 @@ function IceHub.CreateMain()
 	IcyYoutube.Position = UDim2.new(0.506711423, 0, 0.0162650626, 0)
 	IcyYoutube.Size = UDim2.new(0, 100, 0, 15)
 	IcyYoutube.Font = Enum.Font.SourceSans
-	IcyYoutube.Text = "Youtube : IceHub"
+	IcyYoutube.Text = "Youtube : sanderxdev"
 	IcyYoutube.TextColor3 = Color3.fromRGB(255, 255, 255)
 	IcyYoutube.TextSize = 14.000
 	IcyYoutube.TextXAlignment = Enum.TextXAlignment.Left
@@ -289,7 +291,7 @@ function IceHub.CreateMain()
 	IcyDiscord.Position = UDim2.new(0.506711423, 0, 0.0175903663, 0)
 	IcyDiscord.Size = UDim2.new(0, 100, 0, 15)
 	IcyDiscord.Font = Enum.Font.SourceSans
-	IcyDiscord.Text = "Discord : Icy#4444"
+	IcyDiscord.Text = "Discord : toniejaxdd"
 	IcyDiscord.TextColor3 = Color3.fromRGB(255, 255, 255)
 	IcyDiscord.TextSize = 14.000
 	IcyDiscord.TextXAlignment = Enum.TextXAlignment.Left
@@ -301,7 +303,7 @@ function IceHub.CreateMain()
 	NillestRoblox.Position = UDim2.new(0.506711423, 0, 0.0248192828, 0)
 	NillestRoblox.Size = UDim2.new(0, 100, 0, 15)
 	NillestRoblox.Font = Enum.Font.SourceSans
-	NillestRoblox.Text = "Roblox : grze2"
+	NillestRoblox.Text = "Roblox : Examplenameroblox"
 	NillestRoblox.TextColor3 = Color3.fromRGB(255, 255, 255)
 	NillestRoblox.TextSize = 14.000
 	NillestRoblox.TextXAlignment = Enum.TextXAlignment.Left
@@ -313,7 +315,7 @@ function IceHub.CreateMain()
 	NillestDiscord.Position = UDim2.new(0.506711423, 0, 0.0261445791, 0)
 	NillestDiscord.Size = UDim2.new(0, 100, 0, 15)
 	NillestDiscord.Font = Enum.Font.SourceSans
-	NillestDiscord.Text = "Discord : nillest#3135"
+	NillestDiscord.Text = "Discord : ExamplenameDiscord"
 	NillestDiscord.TextColor3 = Color3.fromRGB(255, 255, 255)
 	NillestDiscord.TextSize = 14.000
 	NillestDiscord.TextXAlignment = Enum.TextXAlignment.Left
