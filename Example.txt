@@ -26,6 +26,9 @@ end)
 test1:NewButton("Button", function()
 
 end)
+
+test1:NewTutorial(123456789)
+
 local Tab_test2 = MainUI:NewTab("test2")
 local test2 = Tab_test2:NewSection("test2")
 
