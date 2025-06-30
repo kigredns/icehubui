@@ -1,0 +1,35 @@
+-- example
+local IceHub = loadstring(game:HttpGet("my git lol"))()
+
+local MainUI = IceHub.CreateMain()
+
+local Tab_test1 = MainUI:NewTab("test1")
+local test1 = Tab_test1:NewSection("test1")
+
+test1:NewLabel("Label1")
+
+
+test1:NewTextBox("Text", "", function(value)
+
+end)
+
+test1:NewToggle("Toggle", function(v)
+
+end)
+
+test1:NewDropdown("Dropdown", {
+    "1", "2", "3"
+}, function(V)
+
+end)
+
+test1:NewButton("Button", function()
+
+end)
+local Tab_test2 = MainUI:NewTab("test2")
+local test2 = Tab_test2:NewSection("test2")
+
+test2:NewLabel("Label2")
+
+local Tab_test3 = MainUI:NewTab("test3")
+local test3 = Tab_test3:NewSection("test3")
