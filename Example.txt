@@ -1,5 +1,5 @@
 -- example
-local IceHub = loadstring(game:HttpGet("my git lol"))()
+local IceHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/kigredns/icehubui/refs/heads/main/icehub.lua"))()
 
 local MainUI = IceHub.CreateMain()
 
